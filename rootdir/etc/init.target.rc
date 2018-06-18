@@ -174,7 +174,7 @@ on boot
     write /dev/cpuset/foreground/boost/cpus 0-7
     write /dev/cpuset/background/cpus 0-1
     write /dev/cpuset/system-background/cpus 0-3
-    
+
     # Touchpanel
     chown system system /sys/touchpanel/double_tap
     chmod 0664 /sys/touchpanel/double_tap
@@ -249,13 +249,6 @@ service vendor.cdsprpcd /vendor/bin/cdsprpcd
    user system
    group system
    disabled
-
-service vendor.energy-awareness /system/vendor/bin/energy-awareness
-   class main
-   user system
-   group system
-   oneshot
-   writepid /dev/cpuset/system-background/tasks
 
 service vendor.pd_mapper /system/vendor/bin/pd-mapper
      class core
