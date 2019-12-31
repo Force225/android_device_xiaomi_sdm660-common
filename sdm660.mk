@@ -166,8 +166,7 @@ PRODUCT_PACKAGES += \
     android.hardware.camera.provider@2.4-impl \
     android.hardware.camera.provider@2.4-service \
     android.hardware.camera.provider@2.5 \
-    vendor.qti.hardware.camera.device@1.0 \
-    Snap
+    vendor.qti.hardware.camera.device@1.0
 
 # Codec2 modules
 PRODUCT_PACKAGES += \
@@ -390,8 +389,7 @@ PRODUCT_PACKAGES += \
 
 # Overlays
 DEVICE_PACKAGE_OVERLAYS += \
-    $(COMMON_PATH)/overlay \
-    $(COMMON_PATH)/overlay-lineage
+    $(COMMON_PATH)/overlay
 
 # Permissions
 PRODUCT_COPY_FILES += \
@@ -584,6 +582,10 @@ PRODUCT_PACKAGES += \
 PRODUCT_BOOT_JARS += \
     WfdCommon
 
-# XiaomiParts
+# Wallpapers
 PRODUCT_PACKAGES += \
-   XiaomiParts
+    PixelLiveWallpaperPrebuilt
+
+# XiaomiParts
+#PRODUCT_PACKAGES += \
+#   XiaomiParts
