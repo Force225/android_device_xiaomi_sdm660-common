@@ -214,7 +214,7 @@ PRODUCT_PACKAGES += \
     vendor.display.config@1.9_vendor
 
 # Doze
-PRODUCT_PACKAGES += \
+# PRODUCT_PACKAGES += \
     XiaomiDoze
 
 # DRM
@@ -616,7 +616,7 @@ PRODUCT_BOOT_JARS += \
     WfdCommon
 
 # XiaomiParts
-PRODUCT_PACKAGES += \
+# PRODUCT_PACKAGES += \
    XiaomiParts
 
 # Force triple frame buffers
