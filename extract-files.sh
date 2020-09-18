@@ -30,7 +30,7 @@ fi
 
 ROOT="$COMMON_DIR"/../../..
 
-HELPER="$ROOT"/vendor/carbon/build/tools/extract_utils.sh
+HELPER="$ROOT"/vendor/potato/build/tools/extract_utils.sh
 if [ ! -f "$HELPER" ]; then
     echo "Unable to find helper script at $HELPER"
     exit 1
@@ -87,13 +87,6 @@ function blob_fixup() {
         patchelf --add-needed camera.sdm660_shim.so "${2}"
         ;;
 
-    vendor/lib64/libril-qc-hal-qmi.so)
-        patchelf --replace-needed "libprotobuf-cpp-full.so" "libprotobuf-cpp-full-v29.so" "${2}"
-        ;;
-
-    vendor/lib64/libwvhidl.so)
-        patchelf --replace-needed "libprotobuf-cpp-lite.so" "libprotobuf-cpp-lite-v29.so" "${2}"
-        ;;
     product/etc/permissions/vendor.qti.hardware.data.connection-V1.{0,1}-java.xml)
         sed -i 's/xml version="2.0"/xml version="1.0"/' "${2}"
 
@@ -116,3 +109,13 @@ if [[ "$ONLY_COMMON" = "false" ]] && [[ -s "${DEVICE_DIR}"/proprietary-files.txt
 fi
 
 "$COMMON_DIR"/setup-makefiles.sh
+
+for i in $(grep -rn 'libhidltransport.so\|libhwbinder.so' ../../../vendor/xiaomi/"${DEVICE}"/proprietary | awk '{print $3}'); do
+	patchelf --remove-needed "libhwbinder.so" "$i"
+	patchelf --remove-needed "libhidltransport.so" "$i"
+done
+
+for i in $(grep -rn 'libhidltransport.so\|libhwbinder.so' ../../../vendor/xiaomi/"${DEVICE_COMMON}"/proprietary | awk '{print $3}'); do
+	patchelf --remove-needed "libhwbinder.so" "$i"
+	patchelf --remove-needed "libhidltransport.so" "$i"
+done
