@@ -1,6 +1,6 @@
 on init
     # Configure stune
-    write /dev/stune/foreground/schedtune.prefer_idle
+    write /dev/stune/foreground/schedtune.prefer_idle 1
     write /dev/stune/top-app/schedtune.boost 10
     write /dev/stune/top-app/schedtune.prefer_idle 1
 
